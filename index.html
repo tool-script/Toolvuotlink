@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tool Nhập Key</title>
+    <title>Xác Thực Key</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,71 +55,60 @@
         }
         button:hover { background-color: #2980b9; }
         
-        /* Nút bấm lấy key nhỏ gọn */
-        .btn-get-key {
-            background-color: #e67e22;
-            font-size: 14px;
-            padding: 8px;
-            margin-top: 0;
-            margin-bottom: 10px;
+        /* CSS cho link lấy key */
+        .link-key {
+            color: #3498db;
+            text-decoration: underline;
+            cursor: pointer;
         }
-        .btn-get-key:hover { background-color: #d35400; }
+        .link-key:hover {
+            color: #2980b9;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Nhập Thông Tin Key</h2>
+        <h2>Xác Thực Key</h2>
         
-        <label>Nhập Link / Key chính:</label>
-        <input type="text" id="mainKey" placeholder="Dán link hoặc key chính vào đây...">
-
         <!-- Ô Key 3D -->
-        <label>Key 3D:</label>
-        <input type="text" id="key3d" placeholder="Nhập Key 3D...">
-        <button class="btn-get-key" onclick="layKey3D()">Bấm để lấy Key 3D</button>
+        <label>
+            <a href="https://fnote.net/notes/8rp8KV" target="_blank" class="link-key">Bấm vào đây để lấy Key 3D</a>
+        </label>
+        <input type="text" id="key3d" placeholder="Dán Key 3D vào đây...">
 
         <!-- Ô Key VV -->
-        <label>Key VV:</label>
-        <input type="text" id="keyVV" placeholder="Nhập Key VV...">
-        <button class="btn-get-key" onclick="layKeyVV()">Bấm để lấy Key VV</button>
+        <label>
+            <a href="https://fnote.net/notes/6gNv38" target="_blank" class="link-key">Bấm vào đây để lấy Key VV</a>
+        </label>
+        <input type="text" id="keyVV" placeholder="Dán Key VV vào đây...">
 
-        <hr style="border-color: #7f8c8d; margin: 20px 0;">
-
-        <button onclick="xacNhanKey()">Xác Nhận Tất Cả</button>
+        <button onclick="xacNhanKey()">Xác Thực</button>
     </div>
 
     <script>
-        // Hàm xử lý khi bấm lấy Key 3D
-        function layKey3D() {
-            // Tự động điền key vào ô
-            document.getElementById('key3d').value = "mkhuong-1dskqk239";
-            alert("Đã lấy Key 3D thành công! Mời bạn mở link fnote để kích hoạt.");
-            // Tự động mở link fnote
-            window.open("https://fnote.net/notes/8rp8KV", "_blank");
-        }
-
-        // Hàm xử lý khi bấm lấy Key VV
-        function layKeyVV() {
-            // Tự động điền key vào ô
-            document.getElementById('keyVV').value = "mkhuong-vinhvi3n-ddmdk2";
-            alert("Đã lấy Key VV thành công! Mời bạn mở link fnote để kích hoạt.");
-            // Tự động mở link fnote
-            window.open("https://fnote.net/notes/6gNv38", "_blank");
-        }
-
-        // Hàm xác nhận
         function xacNhanKey() {
-            var main = document.getElementById('mainKey').value;
-            var k3d = document.getElementById('key3d').value;
-            var kvv = document.getElementById('keyVV').value;
+            // Lấy giá trị người dùng nhập
+            var k3d = document.getElementById('key3d').value.trim();
+            var kvv = document.getElementById('keyVV').value.trim();
 
-            if (main === "" || k3d === "" || kvv === "") {
-                alert("Vui lòng nhập đầy đủ thông tin các ô!");
+            // ĐÂY LÀ NƠI BẠN ĐIỀN KEY ĐÚNG VÀO ĐỂ SO SÁNH
+            var key3dDung = "mkhuong-1dskqk239";
+            var keyVVDung = "mkhuong-vinhvi3n-ddmdk2";
+
+            if (k3d === "" || kvv === "") {
+                alert("Vui lòng nhập đầy đủ cả 2 Key!");
                 return;
             }
 
-            alert("Đã nhận đủ thông tin!\nHệ thống đang tiến hành xử lý...");
+            // Kiểm tra xem key nhập vào có khớp với key đúng không
+            if (k3d === key3dDung && kvv === keyVVDung) {
+                alert("✅ Xác thực thành công!\nChào mừng bạn đã vào hệ thống.");
+                // Nếu muốn tự động chuyển hướng sang trang khác, xóa dấu // ở dòng dưới và thay link vào
+                // window.location.href = "link_trang_ban_muon_vao.html";
+            } else {
+                alert("❌ Lỗi: Key không đúng hoặc Key đã hết tác dụng!");
+            }
         }
     </script>
 
