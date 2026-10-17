@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Nhập Key</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+        h2 { margin-top: 0; margin-bottom: 20px; color: #3498db; text-align: center; }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover { background-color: #2980b9; }
+        
+        .link-key {
+            color: #3498db;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .link-key:hover {
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Nhập Thông Tin Key</h2>
+        
+        <label>Nhập Link / Key chính:</label>
+        <input type="text" id="mainKey" placeholder="Dán link hoặc key chính vào đây...">
+
+        <!-- Ô Key 3D đã được điền sẵn mã -->
+        <label>
+            <a href="https://fnote.net/notes/8rp8KV" target="_blank" class="link-key">Lấy Key 3D (Bấm vào đây)</a>
+        </label>
+        <input type="text" id="key3d" value="mkhuong-1dskqk239" placeholder="Nhập Key 3D...">
+
+        <!-- Ô Key VV đã được điền sẵn mã -->
+        <label>
+            <a href="https://fnote.net/notes/6gNv38" target="_blank" class="link-key">Lấy Key VV (Bấm vào đây)</a>
+        </label>
+        <input type="text" id="keyVV" value="mkhuong-vinhvi3n-ddmdk2" placeholder="Nhập Key VV...">
+
+        <button onclick="xacNhanKey()">Xác Nhận</button>
+    </div>
+
+    <script>
+        function xacNhanKey() {
+            var main = document.getElementById('mainKey').value;
+            var k3d = document.getElementById('key3d').value;
+            var kvv = document.getElementById('keyVV').value;
+
+            if (main === "" || k3d === "" || kvv === "") {
+                alert("Vui lòng nhập đầy đủ thông tin các ô!");
+                return;
+            }
+
+            alert("Đã nhận thông tin:\n- Key 3D: " + k3d + "\n- Key VV: " + kvv);
+        }
+    </script>
+
+</body>
+</html>
