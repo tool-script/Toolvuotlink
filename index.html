@@ -55,14 +55,15 @@
         }
         button:hover { background-color: #2980b9; }
         
-        .link-key {
-            color: #3498db;
-            text-decoration: underline;
-            cursor: pointer;
+        /* Nút bấm lấy key nhỏ gọn */
+        .btn-get-key {
+            background-color: #e67e22;
+            font-size: 14px;
+            padding: 8px;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
-        .link-key:hover {
-            color: #2980b9;
-        }
+        .btn-get-key:hover { background-color: #d35400; }
     </style>
 </head>
 <body>
@@ -73,22 +74,41 @@
         <label>Nhập Link / Key chính:</label>
         <input type="text" id="mainKey" placeholder="Dán link hoặc key chính vào đây...">
 
-        <!-- Ô Key 3D đã được điền sẵn mã -->
-        <label>
-            <a href="https://fnote.net/notes/8rp8KV" target="_blank" class="link-key">Lấy Key 3D (Bấm vào đây)</a>
-        </label>
-        <input type="text" id="key3d" value="mkhuong-1dskqk239" placeholder="Nhập Key 3D...">
+        <!-- Ô Key 3D -->
+        <label>Key 3D:</label>
+        <input type="text" id="key3d" placeholder="Nhập Key 3D...">
+        <button class="btn-get-key" onclick="layKey3D()">Bấm để lấy Key 3D</button>
 
-        <!-- Ô Key VV đã được điền sẵn mã -->
-        <label>
-            <a href="https://fnote.net/notes/6gNv38" target="_blank" class="link-key">Lấy Key VV (Bấm vào đây)</a>
-        </label>
-        <input type="text" id="keyVV" value="mkhuong-vinhvi3n-ddmdk2" placeholder="Nhập Key VV...">
+        <!-- Ô Key VV -->
+        <label>Key VV:</label>
+        <input type="text" id="keyVV" placeholder="Nhập Key VV...">
+        <button class="btn-get-key" onclick="layKeyVV()">Bấm để lấy Key VV</button>
 
-        <button onclick="xacNhanKey()">Xác Nhận</button>
+        <hr style="border-color: #7f8c8d; margin: 20px 0;">
+
+        <button onclick="xacNhanKey()">Xác Nhận Tất Cả</button>
     </div>
 
     <script>
+        // Hàm xử lý khi bấm lấy Key 3D
+        function layKey3D() {
+            // Tự động điền key vào ô
+            document.getElementById('key3d').value = "mkhuong-1dskqk239";
+            alert("Đã lấy Key 3D thành công! Mời bạn mở link fnote để kích hoạt.");
+            // Tự động mở link fnote
+            window.open("https://fnote.net/notes/8rp8KV", "_blank");
+        }
+
+        // Hàm xử lý khi bấm lấy Key VV
+        function layKeyVV() {
+            // Tự động điền key vào ô
+            document.getElementById('keyVV').value = "mkhuong-vinhvi3n-ddmdk2";
+            alert("Đã lấy Key VV thành công! Mời bạn mở link fnote để kích hoạt.");
+            // Tự động mở link fnote
+            window.open("https://fnote.net/notes/6gNv38", "_blank");
+        }
+
+        // Hàm xác nhận
         function xacNhanKey() {
             var main = document.getElementById('mainKey').value;
             var k3d = document.getElementById('key3d').value;
@@ -99,7 +119,7 @@
                 return;
             }
 
-            alert("Đã nhận thông tin:\n- Key 3D: " + k3d + "\n- Key VV: " + kvv);
+            alert("Đã nhận đủ thông tin!\nHệ thống đang tiến hành xử lý...");
         }
     </script>
 
